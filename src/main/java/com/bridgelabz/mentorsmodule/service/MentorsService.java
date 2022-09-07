@@ -29,7 +29,7 @@ public class MentorsService implements IMentorsService {
 
 	@Override
 	public MentorsModel addMentor(MentorsDTO mentorsDTO, String token) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8072/mentorsmodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			MentorsModel model = new MentorsModel(mentorsDTO);
 			mentorsRepository.save(model);
@@ -43,7 +43,7 @@ public class MentorsService implements IMentorsService {
 
 	@Override
 	public MentorsModel updateMentor(MentorsDTO mentorsDTO, Long id, String token) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8072/mentorsmodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			Optional<MentorsModel>isMentorPresent = mentorsRepository.findById(id);
 			if(isMentorPresent.isPresent()) {
@@ -76,7 +76,7 @@ public class MentorsService implements IMentorsService {
 
 	@Override
 	public MentorsModel getMentorById(Long id, String token) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8072/mentorsmodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			return mentorsRepository.findById(id, token);
 		}
@@ -85,7 +85,7 @@ public class MentorsService implements IMentorsService {
 
 	@Override
 	public List<MentorsModel> getAllMentors(String token) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8072/mentorsmodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			List<MentorsModel> getAllMentors = mentorsRepository.findAll();
 			if(getAllMentors.size()>0) {
@@ -99,7 +99,7 @@ public class MentorsService implements IMentorsService {
 
 	@Override
 	public MentorsModel deleteMentor(Long id, String token) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8072/mentorsmodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			Optional<MentorsModel> isMentorPresent = mentorsRepository.findById(id);
 			if(isMentorPresent.isPresent()) {
@@ -116,7 +116,7 @@ public class MentorsService implements IMentorsService {
 
 	@Override
 	public List<MentorsModel> getMentorsByRole(String role, String token) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8072/mentorsmodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			List<MentorsModel> isRolePresent = mentorsRepository.findByMentorRole(role);
 			if (isRolePresent.size() > 0) {
@@ -129,7 +129,7 @@ public class MentorsService implements IMentorsService {
 
 	@Override
 	public long mentorsRoleCount(String mentorRole, String token) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8072/mentorsmodule/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			List<MentorsModel> isMentorRolePresent = mentorsRepository.findByMentorRole(mentorRole);
 			if(isMentorRolePresent.size() > 0) {
