@@ -11,6 +11,4 @@ public interface MentorsRepository extends JpaRepository<MentorsModel, Long> {
 
 	List<MentorsModel> findByMentorRole(String role);
 
-	MentorsModel findById(Long id, String token);
-
 }

@@ -75,10 +75,10 @@ public class MentorsService implements IMentorsService {
 	}
 
 	@Override
-	public MentorsModel getMentorById(Long id, String token) {
+	public Optional<MentorsModel> getMentorById(Long id, String token) {
 		boolean isUserPresent = restTemplate.getForObject("http://LMS-AdminModule:8069/adminmodule/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
-			return mentorsRepository.findById(id, token);
+		return mentorsRepository.findById(id);
 		}
 		throw new CustomNotFoundException(400,"Token Invalid");
 	}

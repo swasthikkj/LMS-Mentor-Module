@@ -2,6 +2,7 @@ package com.bridgelabz.mentorsmodule.service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import com.bridgelabz.mentorsmodule.dto.MentorsDTO;
 
@@ -13,7 +14,7 @@ public interface IMentorsService {
 	
 	MentorsModel updateMentor(MentorsDTO mentorsDTO, Long id, String token);
 
-	MentorsModel getMentorById(Long id, String token);
+	Optional<MentorsModel> getMentorById(Long id, String token);
 
 	List<MentorsModel> getAllMentors(String token);
 

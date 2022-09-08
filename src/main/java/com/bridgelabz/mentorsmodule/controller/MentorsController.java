@@ -1,5 +1,6 @@
 package com.bridgelabz.mentorsmodule.controller;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -52,7 +53,7 @@ public class MentorsController {
 	 */
 	@GetMapping("/getMentorData/{id}")
     public ResponseEntity<Response> getMentorById(@PathVariable Long id, @RequestHeader String token) {
-		MentorsModel mentorsModel = mentorsService.getMentorById(id, token);
+		Optional<MentorsModel> mentorsModel = mentorsService.getMentorById(id, token);
 		Response response = new Response(200, "mentor by id fetch successfully", mentorsModel);
 		return new ResponseEntity<>(response, HttpStatus.OK);
     }
